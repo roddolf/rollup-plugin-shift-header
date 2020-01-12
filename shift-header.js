@@ -4,7 +4,7 @@ var MagicString = require('magic-string');
 
 module.exports = function (options = {}) {
   return {
-    transformBundle (code) {
+    renderChunk (code) {
       var pattern = /\/\/.*\n/g;
       var headerIndex;
       var headerExtent;
