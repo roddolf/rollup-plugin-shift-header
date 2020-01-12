@@ -18,7 +18,7 @@ module.exports = function (options = {}) {
         headerExtent = match.index + line.length;
         header += line;
         var remaining = code.slice(match.index + line.length);
-        if (!(/^(\r?\n)?\/\//.test(remaining))) {
+        if (!(/^\s*(\r?\n)?\/\//.test(remaining))) {
           break;
         }
         if (/^\r\n/.test(remaining)) {
