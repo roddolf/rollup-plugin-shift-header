@@ -5,7 +5,7 @@ var MagicString = require('magic-string');
 module.exports = function (options = {}) {
   return {
     renderChunk (code) {
-      var pattern = /\/\/.*\n/g;
+      var pattern = /\/\/.*\r?\n/g;
       var headerIndex;
       var headerExtent;
       var header = '';
@@ -18,10 +18,10 @@ module.exports = function (options = {}) {
         headerExtent = match.index + line.length;
         header += line;
         var remaining = code.slice(match.index + line.length);
-        if (!(/^\n?\/\//.test(remaining))) {
+        if (!(/^(\r?\n)?\/\//.test(remaining))) {
           break;
         }
-        if (/^\n/.test(remaining)) {
+        if (/^\r\n/.test(remaining)) {
           header += '\n';
         }
       }
